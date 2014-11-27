@@ -983,6 +983,7 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int ic_launcher=0x7f020057;
         public static final int jpg0001=0x7f020058;
+        public static final int jpg0031=0x7f020059;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -996,11 +997,12 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05003e;
+        public static final int action_settings=0x7f05003f;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int buttonNext=0x7f05003d;
+        public static final int buttonPhoto=0x7f05003e;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int container=0x7f05003c;
@@ -1151,7 +1153,9 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
+        public static final int generate=0x7f0a0011;
         public static final int hello_world=0x7f0a000e;
+        public static final int select_photo=0x7f0a0012;
         public static final int title_activity_namecard=0x7f0a0010;
     }
     public static final class style {

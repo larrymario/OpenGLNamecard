@@ -5,5 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_namecard">NamecardActivity</string>
-
+    <string name="generate">Generate Virtual Namecard</string>
+    <string name="select_photo">Select a photo</string>
 </resources>

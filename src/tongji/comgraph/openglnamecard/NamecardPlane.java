@@ -1,21 +1,25 @@
 package tongji.comgraph.openglnamecard;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLUtils;
+import android.util.Log;
 
 public class NamecardPlane {
 	private FloatBuffer vertexBuffer;
 	private FloatBuffer texBuffer1;
 	private FloatBuffer texBuffer2;
+	
+	private String filename;
 	
 	private float[] vertices = {
 		-3.5f, -2.0f, 0.0f,
@@ -31,7 +35,7 @@ public class NamecardPlane {
 		1.0f, 0.0f
 	};
 	
-	private float[] texturePos2 = {
+	private float[] texturePos2 = {		//Horizontally Reversed Texture
 		1.0f, 1.0f,
 		0.0f, 1.0f,
 		1.0f, 0.0f,
@@ -41,7 +45,7 @@ public class NamecardPlane {
 	
 	int[] textureIDs = new int[1];
 	
-	public NamecardPlane() {
+	public NamecardPlane(String filename) {
 		ByteBuffer vbb = ByteBuffer.allocateDirect(vertices.length * 4);
 	    vbb.order(ByteOrder.nativeOrder());
 	    vertexBuffer = vbb.asFloatBuffer();
@@ -59,6 +63,8 @@ public class NamecardPlane {
 	    texBuffer2 = tbb2.asFloatBuffer();
 	    texBuffer2.put(texturePos2);
 	    texBuffer2.position(0);
+	    
+	    this.filename = filename;
 	}
 	
 	public void draw(GL10 gl) {
@@ -76,7 +82,7 @@ public class NamecardPlane {
 	    gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
 	    gl.glPopMatrix();
 	    
-	    gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, texBuffer2);
+	    gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, texBuffer2);	//Using Reversed Setting
 	    
 	    gl.glPushMatrix();
 	    gl.glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
@@ -95,16 +101,22 @@ public class NamecardPlane {
 		gl.glBindTexture(GL10.GL_TEXTURE_2D, textureIDs[0]);
 		
 		gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
-		gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR);
+		gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_NEAREST);
 		
-		InputStream ins = context.getResources().openRawResource(R.drawable.jpg0001);
-		Bitmap bmp;
+		FileInputStream ins = null;
+		File file = new File(filename);
+		Bitmap bmp = null;
+		Log.v("photo", filename);
 		try {
+			ins = new FileInputStream(file);
+			//bmp = BitmapFactory.decodeFile(filename);
 			bmp = BitmapFactory.decodeStream(ins);
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				ins.close();
-			}catch(IOException e) {}
+			} catch(Exception e) {}
 		}
 		
 		GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bmp, 0);

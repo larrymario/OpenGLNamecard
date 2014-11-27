@@ -1,6 +1,7 @@
 package tongji.comgraph.openglnamecard;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,17 +16,22 @@ import android.os.Build;
 public class NamecardActivity extends Activity {
 
 	private NamecardGLSurfaceView glView;
+	private String photoPath;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Intent intent = this.getIntent();
+		Bundle bundle = intent.getExtras();
+		photoPath = bundle.getString("photo");
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
         setContentView(R.layout.activity_namecard);
         
-        glView = new NamecardGLSurfaceView(this, new NamecardRenderer(this));
+        glView = new NamecardGLSurfaceView(this, new NamecardRenderer(this, photoPath));
         setContentView(glView);	
         
 	}
