@@ -4,20 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context="tongji.comgraph.openglnamecard.MainActivity"
     tools:ignore="MergeRootFrame" >
 
-    <Button
-        android:id="@+id/buttonNext"
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/background_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/spinnerColor"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:prompt="@string/background_color"
+        android:spinnerMode="dialog" />
+
+    <CheckBox
+        android:id="@+id/checkBoxLight"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/generate" />
-
+        android:layout_marginTop="4dp"
+        android:text="@string/diffuse_lighting" />
+    
     <Button
         android:id="@+id/buttonPhoto"
         android:layout_width="fill_parent"
@@ -27,6 +47,16 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="4dp"
         android:text="@string/select_photo" />
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/generate" />
 
 </LinearLayout>
 

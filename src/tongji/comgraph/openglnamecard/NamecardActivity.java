@@ -2,36 +2,37 @@ package tongji.comgraph.openglnamecard;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.os.Build;
 
 public class NamecardActivity extends Activity {
 
 	private NamecardGLSurfaceView glView;
-	private String photoPath;
+	//private String photoPath;
+	private Bundle renderOptions;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		renderOptions = new Bundle();
+		
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
-		photoPath = bundle.getString("photo");
+		//photoPath = bundle.getString("photo");
+		renderOptions.putString("photo", bundle.getString("photo"));
+		renderOptions.putInt("bgId", bundle.getInt("bgId"));
+		renderOptions.putBoolean("hasLight", bundle.getBoolean("hasLight"));
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
         setContentView(R.layout.activity_namecard);
         
-        glView = new NamecardGLSurfaceView(this, new NamecardRenderer(this, photoPath));
+        glView = new NamecardGLSurfaceView(this, new NamecardRenderer(this, renderOptions));
         setContentView(glView);	
         
 	}

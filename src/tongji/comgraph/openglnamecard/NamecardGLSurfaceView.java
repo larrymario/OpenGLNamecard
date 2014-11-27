@@ -8,8 +8,8 @@ import android.util.Log;
 
 public class NamecardGLSurfaceView extends GLSurfaceView {
 
-	private int mScreenWidth;
-	private int mScreenHeight;
+	//private int mScreenWidth;
+	//private int mScreenHeight;
 	private float mPreviousX = 0.0f;
 	private float mPreviousY = 0.0f;
 	private float mCurrentRate = 1.0f;
@@ -33,9 +33,9 @@ public class NamecardGLSurfaceView extends GLSurfaceView {
 	}
 	
 	private void init(Context context) {
-		DisplayMetrics display = context.getResources().getDisplayMetrics();
-		mScreenWidth = display.widthPixels;
-		mScreenHeight = display.heightPixels;
+		//DisplayMetrics display = context.getResources().getDisplayMetrics();
+		//mScreenWidth = display.widthPixels;
+		//mScreenHeight = display.heightPixels;
 	}
 	
 	@Override
@@ -50,7 +50,7 @@ public class NamecardGLSurfaceView extends GLSurfaceView {
 				break;
 			case MotionEvent.ACTION_MOVE:
 				float dx = x - mPreviousX;
-				float dy = y - mPreviousY;
+				//float dy = y - mPreviousY;
 				
 				renderer.yrot += 0.5f * dx;
 				requestRender();
@@ -66,7 +66,7 @@ public class NamecardGLSurfaceView extends GLSurfaceView {
 		if (e.getPointerCount() == 2) {
 			switch (e.getAction()) {
 			case MotionEvent.ACTION_DOWN:
-				mIsFirst = false;
+				mIsFirst = true;
 				break;
 			case MotionEvent.ACTION_MOVE:
 				if (mIsFirst) {
