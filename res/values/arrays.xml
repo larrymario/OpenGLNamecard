@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string-array name="color_spinner">
+    <string-array name="color_spinner">
         <item>Black</item>
         <item>Mist Gray</item>
         <item>Night Sky Blue</item>
         <item>Sky Blue</item>
+    </string-array>
+    <string-array name="mist_spinner">
+        <item>None</item>
+        <item>Exponent 1</item>
+        <item>Exponent 2</item>
+        <item>Linear</item>
     </string-array>
 </resources>

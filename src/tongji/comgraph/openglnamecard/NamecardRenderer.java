@@ -27,6 +27,7 @@ public class NamecardRenderer implements Renderer {
 		GL10.GL_EXP2,
 		GL10.GL_LINEAR
 	};
+	private int fogId;
 	private float fogColor[] = {
 		0.3f, 0.3f, 0.3f, 1.0f
 	};
@@ -34,7 +35,7 @@ public class NamecardRenderer implements Renderer {
 	public NamecardRenderer(Context context, Bundle renderOptions) {
 		this.context = context;
 		this.renderOptions = renderOptions;
-		
+		fogId = renderOptions.getInt("mistId");
 		namecard = new NamecardPlane(renderOptions);
 
 	}
@@ -105,13 +106,15 @@ public class NamecardRenderer implements Renderer {
 		namecard.loadTexture(gl, context);
 		gl.glEnable(GL10.GL_TEXTURE_2D);
 		
-		gl.glFogx(GL10.GL_FOG_MODE, fogMode[1]); 
-        gl.glFogfv(GL10.GL_FOG_COLOR, fogColor,0); 
-        //gl.glHint(GL10.GL_FOG_HINT, GL10.GL_FOG_HINT); 
-        gl.glFogf(GL10.GL_FOG_DENSITY, 0.3f); 
-        gl.glFogf(GL10.GL_FOG_START, 1.0f);
-        gl.glFogf(GL10.GL_FOG_END, 5.0f);
-        gl.glEnable(GL10.GL_FOG); 
+		if (fogId != 0) {
+			gl.glFogx(GL10.GL_FOG_MODE, fogMode[fogId - 1]); 
+	        gl.glFogfv(GL10.GL_FOG_COLOR, fogColor,0); 
+	        //gl.glHint(GL10.GL_FOG_HINT, GL10.GL_FOG_HINT); 
+	        gl.glFogf(GL10.GL_FOG_DENSITY, 0.3f); 
+	        gl.glFogf(GL10.GL_FOG_START, 1.0f);
+	        gl.glFogf(GL10.GL_FOG_END, 5.0f);
+	        gl.glEnable(GL10.GL_FOG);
+		}
 	}
 
 }

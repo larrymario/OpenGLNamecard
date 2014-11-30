@@ -25,6 +25,7 @@ public class NamecardActivity extends Activity {
 		//photoPath = bundle.getString("photo");
 		renderOptions.putString("photo", bundle.getString("photo"));
 		renderOptions.putInt("bgId", bundle.getInt("bgId"));
+		renderOptions.putInt("mistId", bundle.getInt("mistId"));
 		renderOptions.putBoolean("hasLight", bundle.getBoolean("hasLight"));
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 

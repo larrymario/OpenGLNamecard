@@ -27,10 +27,12 @@ public class MainActivity extends Activity {
 	private static Button buttonNext; 
 	private static Button buttonPhoto;
 	private static Spinner spinnerColor;
+	private static Spinner spinnerMist;
 	private static CheckBox checkBoxLight;
 	
 	private String photoPath = null;
 	private int bgId = 0;
+	private int mistId = 0;
 	private boolean hasLight = false;
 	
 	@Override
@@ -41,15 +43,32 @@ public class MainActivity extends Activity {
 		context = MainActivity.this;
 		
 		spinnerColor = (Spinner) this.findViewById(R.id.spinnerColor);
-		String[] spinnerItems = this.getResources().getStringArray(R.array.color_spinner);
-		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, spinnerItems);
-		spinnerColor.setAdapter(spinnerAdapter);
+		String[] spinnerColorItems = this.getResources().getStringArray(R.array.color_spinner);
+		ArrayAdapter<String> spinnerColorAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, spinnerColorItems);
+		spinnerColor.setAdapter(spinnerColorAdapter);
 		spinnerColor.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position,
 					long id) {
-				Log.v("color", "color " + position + id);
 				bgId = position;
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+
+			}
+			
+		});
+		
+		spinnerMist = (Spinner) this.findViewById(R.id.spinnerMist);
+		String[] spinnerMistItems = this.getResources().getStringArray(R.array.mist_spinner);
+		ArrayAdapter<String> spinnerMistAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, spinnerMistItems);
+		spinnerMist.setAdapter(spinnerMistAdapter);
+		spinnerMist.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position,
+					long id) {
+				mistId = position;
 			}
 
 			@Override
@@ -67,6 +86,7 @@ public class MainActivity extends Activity {
 				Bundle bundle = new Bundle();
 				bundle.putString("photo", photoPath);
 				bundle.putInt("bgId", bgId);
+				bundle.putInt("mistId", mistId);
 				bundle.putBoolean("hasLight", hasLight);
 				intent.putExtras(bundle);
 				if (photoPath == null) {

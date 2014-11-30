@@ -9,4 +9,5 @@
     <string name="select_photo">Select a picture</string>
     <string name="background_color">Background Color</string>
     <string name="diffuse_lighting">Diffuse Lighting</string>
+    <string name="mist_setting">Mist Setting</string>
 </resources>
