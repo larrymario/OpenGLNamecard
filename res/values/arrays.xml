@@ -3,8 +3,8 @@
     <string-array name="color_spinner">
         <item>Black</item>
         <item>Mist Gray</item>
-        <item>Night Sky Blue</item>
-        <item>Sky Blue</item>
+        <item>Dark Blue</item>
+        <item>Sky blue</item>
     </string-array>
     <string-array name="mist_spinner">
         <item>None</item>

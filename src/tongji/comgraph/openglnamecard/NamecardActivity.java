@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 public class NamecardActivity extends Activity {
 
@@ -23,10 +24,15 @@ public class NamecardActivity extends Activity {
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
 		//photoPath = bundle.getString("photo");
+
+        Toast.makeText(NamecardActivity.this,bundle.getString("nameStr"), 1000).show();
 		renderOptions.putString("photo", bundle.getString("photo"));
 		renderOptions.putInt("bgId", bundle.getInt("bgId"));
 		renderOptions.putInt("mistId", bundle.getInt("mistId"));
 		renderOptions.putBoolean("hasLight", bundle.getBoolean("hasLight"));
+		renderOptions.putString("nameStr", bundle.getString("nameStr"));
+		renderOptions.putString("unitStr", bundle.getString("unitStr"));
+		renderOptions.putString("phoneStr", bundle.getString("phoneStr"));
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

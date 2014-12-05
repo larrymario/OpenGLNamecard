@@ -1,5 +1,6 @@
 package tongji.comgraph.openglnamecard;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -34,6 +36,11 @@ public class MainActivity extends Activity {
 	private int bgId = 0;
 	private int mistId = 0;
 	private boolean hasLight = false;
+	
+	private EditText nameText;
+	private String unitStr = new String();
+	private String nameStr = new String();
+	private String phoneStr = new String();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,15 +89,25 @@ public class MainActivity extends Activity {
 		buttonNext.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
+				nameText = (EditText)findViewById(R.id.editText1);
+				unitStr = nameText.getText().toString();
+				nameText = (EditText)findViewById(R.id.editText2);
+				nameStr = nameText.getText().toString();
+				nameText = (EditText)findViewById(R.id.editText3);
+				phoneStr = nameText.getText().toString();
+
 				Intent intent = new Intent(context, NamecardActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putString("photo", photoPath);
 				bundle.putInt("bgId", bgId);
 				bundle.putInt("mistId", mistId);
 				bundle.putBoolean("hasLight", hasLight);
+				bundle.putString("unitStr", unitStr);
+				bundle.putString("nameStr", nameStr);
+				bundle.putString("phoneStr", phoneStr);
 				intent.putExtras(bundle);
 				if (photoPath == null) {
-					Toast.makeText(context, "No picture selected, using default.", Toast.LENGTH_LONG).show();
+					Toast.makeText(context, "Œ¥’“µΩÕº∆¨£¨ π”√‘§…ËÕº∆¨.", Toast.LENGTH_LONG).show();
 				}
 				context.startActivity(intent);
 			}
